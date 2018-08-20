@@ -57,7 +57,8 @@ import Foundation
 
 extension {{enumName}} {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    let bundle = Bundle.resourceBundle(for: BundleToken.self) ?? Bundle(for: BundleToken.self)
+    let format = NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
